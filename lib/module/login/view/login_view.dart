@@ -53,14 +53,17 @@ class LoginView extends StatelessWidget {
                           padding: const EdgeInsets.all(12),
                           margin: const EdgeInsets.only(),
                           child: TextFormField(
-                            initialValue: null,
+                            onChanged: (value) {
+                              controller.email = value;
+                            },
+                            initialValue: controller.email,
                             decoration: const InputDecoration(
-                              labelText: 'Username',
+                              labelText: 'Email',
                               labelStyle: TextStyle(
                                 color: Colors.white,
                               ),
                               suffixIcon: Icon(
-                                Icons.abc_rounded,
+                                Icons.email,
                                 color: Colors.white,
                               ),
                               enabledBorder: UnderlineInputBorder(
@@ -75,7 +78,10 @@ class LoginView extends StatelessWidget {
                           padding: const EdgeInsets.all(12),
                           margin: const EdgeInsets.only(),
                           child: TextFormField(
-                            initialValue: null,
+                            onChanged: (value) {
+                              controller.password = value;
+                            },
+                            initialValue: controller.password,
                             obscureText: true,
                             decoration: const InputDecoration(
                               labelText: 'Password',
@@ -107,7 +113,7 @@ class LoginView extends StatelessWidget {
                                   BorderRadius.circular(12), // <-- Radius
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () => controller.doLogin(),
                         ),
                         const SizedBox(
                           height: 10.0,
